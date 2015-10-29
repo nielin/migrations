@@ -110,6 +110,12 @@ trait ConfigurationTrait
             }
         }
 
+        if ($adapterName === 'pgsql') {
+            if (!empty($connectionConfig['schema'])) {
+                $config['environments']['default']['schema'] = $connectionConfig['schema'];
+            }
+        }
+
         return $this->configuration = new Config($config);
     }
 
